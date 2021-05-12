@@ -3,21 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-void cal_time(long int e_time, long int s_time)
-{
-  
-  int day,hour,min,sec;
-  int it = e_time - s_time;
-
-  // 詳細時間計算（未完成）
-  sec  = it % 60; it /= 60;
-  min  = it % 60; it /= 60;
-  hour = it % 24;
-  
-  // 出力
-  printf("故障時間：%02d時間%02d分%02d秒\n",hour,min,sec);
-}
-
 int main(int argc, char *argv[]){
   FILE *fp;
   char *fname = "log.csv";
@@ -71,8 +56,7 @@ int main(int argc, char *argv[]){
    
     if(count == N){ //特定のサーバがN回以上連続でタイムアウトしたらエラー時間を計算
       printf("broken \n");
-      printf("broken server : %s ", server); //故障状態のサーバアドレスを出力
-      cal_time(time, error_time); //サーバの故障時間を出力
+      break;
     }
 
   }
